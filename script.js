@@ -8,12 +8,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Add subtle glow effect on hover for avatar
     const avatar = document.querySelector('.avatar');
     avatar.addEventListener('mouseover', () => {
-        avatar.style.boxShadow = '0 0 20px rgba(255, 105, 180, 0.9)';
+        avatar.style.boxShadow = '0 0 30px rgba(192, 192, 192, 0.8), 0 0 20px rgba(255, 0, 0, 0.6)';
     });
     avatar.addEventListener('mouseout', () => {
-        avatar.style.boxShadow = '0 0 15px rgba(255, 105, 180, 0.7)';
+        avatar.style.boxShadow = '0 0 20px rgba(192, 192, 192, 0.6), 0 0 10px rgba(255, 0, 0, 0.3)';
     });
+
+    function createParticle() {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.background = `rgba(255, 0, 0, ${Math.random() * 0.4 + 0.1})`;
+        document.querySelector('.profile-container').appendChild(particle);
+        setTimeout(() => particle.remove(), 1500);
+    }
+    setInterval(createParticle, 150);
 });
